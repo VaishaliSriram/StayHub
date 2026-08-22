@@ -1,0 +1,386 @@
+body{
+    font-family: 'plus Jakarta sans',sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+   flex: 1;
+}
+ .navbar{
+    height: 5rem;
+    background-color: white;
+ }
+ .fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+ }
+ .nav-link{
+    color: #222222 !important;
+ }
+ .f-info-links a {
+    text-decoration: none;
+    color: #222222;
+ }
+ .f-info-links a:hover {
+    text-decoration: underline;
+ }
+ .f-info-links,
+  .f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .f-info-socials i {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+ }
+ .f-info{
+    text-align: centre;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+ }
+ .listing-card{
+    border: none !important;
+    margin-bottom: 2 rem;
+ }
+ .card-img-top{
+    border-radius: 1 rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+
+ }
+ .card-body{
+    padding: 0 !important;
+ }
+ .crd-text p{
+    font-weight: 400;
+    
+ }
+ .listing-link{
+    text-decoration: none;
+ }
+ .card-img-overlay{
+    opacity: 0;
+    transition: 0.3s,ease;
+ }
+.card:hover .card-img-overlay {
+    opacity: 0.2;
+    background-color: white;
+}
+.add-btn{
+   background-color:#fe424d !important;
+   border: none !important;
+}
+.edit-btn{
+   background-color:#fe424d !important;
+   border: none !important;
+ 
+}
+/* .show-img{
+   height: 30vh;
+} */
+.btns{
+   display: flex;
+}
+/* .show-card{
+   padding-left: 0;
+   padding-right: 0;
+} */
+.categories-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+
+.category-btn{
+    text-decoration: none;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    color: black;
+    background: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.category-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.active{
+    background: #fe424d;
+    color: white;
+    border: none;
+}
+/* .show-card {
+    border-radius: 20px;
+} */
+ /* .show-card {
+    max-width: 850px;
+    margin: auto;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.show-card h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+} */
+
+/* .show-card .description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+}
+
+.show-price {
+    color: #198754;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.show-location {
+    font-size: 1rem;
+    color: #555;
+} */
+
+/* .card-body {
+    padding: 2rem;
+} */
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.badge {
+    padding: 8px 14px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+/* SHOW PAGE */
+
+/* ===========================
+   SHOW PAGE
+=========================== */
+
+/* ==========================================
+   SHOW PAGE
+========================================== */
+
+.show-container{
+    max-width: 1150px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Header */
+
+.listing-header{
+    margin-bottom: 1.5rem;
+}
+
+.listing-title{
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.listing-location{
+    color: #717171;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Image */
+
+.listing-image-wrapper{
+    width: 100%;
+}
+
+.listing-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Main Cards */
+
+/* .details-card,
+.review-section,
+.review-card,
+.price-card{
+    background: #fff;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+} */
+
+/* Details */
+
+.details-card{
+    padding: 2rem;
+    height: 100%;
+}
+
+.category-badge{
+    display: inline-block;
+    background: #fe424d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.section-heading{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.listing-description{
+    color: #555;
+    line-height: 1.9;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Price Card */
+
+.price-card{
+    padding: 2rem;
+    position: sticky;
+    top: 100px;
+}
+
+.price-value{
+    color: #fe424d;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.price-night{
+    color: #777;
+    margin-top: 5px;
+}
+
+.reserve-btn{
+    background: #fe424d;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.reserve-btn:hover{
+    background: #e63946;
+    color: white;
+}
+
+/* Owner Buttons */
+
+.owner-actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+/* Review Form */
+
+.review-section{
+    margin-top: 60px;
+    padding: 2rem;
+}
+
+.review-form .form-control{
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.review-form .form-range{
+    cursor: pointer;
+}
+
+/* Reviews */
+
+.reviews-wrapper{
+    margin-top: 60px;
+}
+
+.review-card{
+    padding: 1.5rem;
+    height: 100%;
+    transition: 0.25s ease;
+}
+
+.review-card:hover{
+    transform: translateY(-4px);
+}
+
+.review-rating{
+    font-weight: 700;
+    color: #fe424d;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.review-comment{
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+
+.btn-dark{
+    border-radius: 10px;
+}
+
+.btn-danger{
+    border-radius: 10px;
+}
+
+/* Responsive */
+
+@media(max-width: 768px){
+
+    .listing-title{
+        font-size: 1.8rem;
+    }
+
+    .listing-image{
+        height: 280px;
+    }
+
+    .price-card{
+        position: static;
+    }
+
+    .owner-actions{
+        flex-direction: column;
+    }
+}

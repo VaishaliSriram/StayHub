@@ -1,0 +1,116 @@
+<% layout("/layouts/boylerplate") %>
+
+<h3 class="mb-4">All Listings</h3>
+
+<!-- CATEGORY FILTERS -->
+<!-- <div class="mb-4 d-flex flex-wrap gap-2">
+
+    <a href="/listings" class="btn btn-dark">
+        All
+    </a>
+
+    <a href="/listings/category/Beach" class="btn btn-outline-primary">
+        🏖 Beach
+    </a>
+
+    <a href="/listings/category/Mountain" class="btn btn-outline-success">
+        🏔 Mountain
+    </a>
+
+    <a href="/listings/category/Camping" class="btn btn-outline-warning">
+        🏕 Camping
+    </a>
+
+    <a href="/listings/category/City" class="btn btn-outline-secondary">
+        🏙 City
+    </a>
+
+    <a href="/listings/category/Castle" class="btn btn-outline-danger">
+        🏰 Castle
+    </a>
+
+    <a href="/listings/category/Tropical" class="btn btn-outline-info">
+        🌴 Tropical
+    </a>
+
+    <a href="/listings/category/Farm" class="btn btn-outline-dark">
+        🚜 Farm
+    </a>
+
+    <a href="/listings/category/Arctic" class="btn btn-outline-primary">
+        ❄ Arctic
+    </a>
+
+    <a href="/listings/category/Luxury" class="btn btn-outline-warning">
+        ✨ Luxury
+    </a>
+
+</div> -->
+<div class="categories-container">
+    
+    <a href="/listings" class="category-btn active">All</a>
+
+    <a href="/listings/category/Beach" class="category-btn">🏖️ Beach</a>
+
+    <a href="/listings/category/Mountain" class="category-btn">⛰️ Mountain</a>
+
+    <a href="/listings/category/Camping" class="category-btn">🏕️ Camping</a>
+
+    <!-- <a href="/listings/category/City" class="category-btn">🏙️ City</a> -->
+
+    <a href="/listings/category/Castle" class="category-btn">🏰 Castle</a>
+
+    <a href="/listings/category/Tropical" class="category-btn">🌴 Tropical</a>
+
+    <a href="/listings/category/Farm" class="category-btn">🚜 Farm</a>
+
+    <a href="/listings/category/Arctic" class="category-btn">❄️ Arctic</a>
+
+    <a href="/listings/category/Luxury" class="category-btn">✨ Luxury</a>
+
+</div>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+
+<% if(allListings.length === 0) { %>
+    <h5>No listings found 😢</h5>
+<% } %>
+
+<% for(let listing of allListings){ %>
+
+    <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none text-dark">
+
+        <div class="card listing-card h-100 shadow-sm">
+
+            <img
+                src="<%= listing.image?.url || 'https://via.placeholder.com/300' %>"
+                class="card-img-top"
+                alt="listing-image"
+                style="height: 20rem; object-fit: cover;"
+            />
+
+            <div class="card-body">
+
+                <p class="card-text">
+                    <b><%= listing.title %></b>
+                    <br>
+
+                    <% if(listing.category){ %>
+                        <span class="badge bg-secondary">
+                            <%= listing.category %>
+                        </span>
+                        <br>
+                    <% } %>
+
+                    ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : "0" %>/night
+                </p>
+
+            </div>
+
+        </div>
+
+    </a>
+
+<% } %>
+
+</div>

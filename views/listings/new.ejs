@@ -1,0 +1,133 @@
+<% layout("/layouts/boylerplate") %>
+
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+
+    <br><br>
+    <h3>Create a New Listing</h3>
+
+    <form method="POST" action="/listings" class="needs-validation"     enctype="multipart/form-data"
+ novalidate>
+
+      <!-- TITLE -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input 
+          name="listing[title]" 
+          placeholder="Add a catchy title" 
+          type="text" 
+          class="form-control"
+          required
+          autocomplete="off"
+        />
+        <div class="invalid-feedback">Title is required</div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+          autocomplete="off"
+        ></textarea>
+        <div class="invalid-feedback">Description is required</div>
+      </div>
+
+      <!-- IMAGE -->
+<div class="mb-3">
+    <label for="image" class="form-label">
+        Upload Image
+    </label>
+
+    <input
+        name="listing[image]"
+        type="file"
+        class="form-control"
+        required
+    />
+
+    <small class="text-muted">
+        Upload an image from your device
+    </small>
+</div>
+<!-- CATEGORY -->
+<div class="mb-3">
+  <label for="category" class="form-label">
+    Category
+  </label>
+
+  <select
+    name="listing[category]"
+    class="form-select"
+    required
+  >
+    <option value="">Select Category</option>
+    <option value="Beach">🏖 Beach</option>
+    <option value="Mountain">🏔 Mountain</option>
+    <option value="Camping">🏕 Camping</option>
+    <option value="City">🏙 City</option>
+    <option value="Castle">🏰 Castle</option>
+    <option value="Tropical">🌴 Tropical</option>
+    <option value="Farm">🚜 Farm</option>
+    <option value="Arctic">❄ Arctic</option>
+    <option value="Luxury">✨ Luxury</option>
+  </select>
+
+  <div class="invalid-feedback">
+    Please select a category
+  </div>
+</div>
+      <!-- PRICE -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input 
+          name="listing[price]" 
+          placeholder="1200" 
+          type="number" 
+          class="form-control"
+          required min="1"
+          autocomplete="off"
+        />
+        <div class="invalid-feedback">Price is required</div>
+      </div>
+
+      <!-- COUNTRY + LOCATION -->
+      <div class="row">
+
+        <div class="mb-3 col-md-4"> 
+          <label for="country" class="form-label">Country</label>
+          <input
+            name="listing[country]"
+            placeholder="India"
+            type="text"
+            class="form-control"
+            required
+            autocomplete="off"
+          />
+          <div class="invalid-feedback">Country is required</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="location" class="form-label">Location</label>
+          <input
+            name="listing[location]"
+            placeholder="Chennai / Tamil Nadu"
+            type="text"
+            class="form-control"
+            required
+            autocomplete="off"
+          />
+          <div class="invalid-feedback">Location is required</div>
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <button class="btn btn-dark add-btn mt-3">Add</button>
+
+    </form>
+
+  </div>
+</div>

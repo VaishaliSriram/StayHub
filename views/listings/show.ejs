@@ -1,0 +1,247 @@
+<% layout("/layouts/boylerplate") %>
+
+<div class="container py-4 show-container">
+
+    <!-- TITLE -->
+    <div class="listing-header mb-4">
+        <h1 class="listing-title">
+            <%= listing.title %>
+        </h1>
+
+        <p class="listing-location">
+            📍 <%= listing.location %>, <%= listing.country %>
+        </p>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="listing-image-wrapper mb-5">
+        <img
+            src="<%= listing.image?.url || 'https://via.placeholder.com/1200x700' %>"
+            class="listing-image"
+            alt="listing-image"
+        >
+    </div>
+
+    <!-- DETAILS -->
+    <div class="row g-4">
+
+        <!-- LEFT SIDE -->
+        <div class="col-lg-8">
+
+            <div class="card details-card">
+
+                <% if(listing.category){ %>
+                    <span class="category-badge">
+                        <%= listing.category %>
+                    </span>
+                <% } %>
+
+                <h3 class="section-heading">
+                    About this place
+                </h3>
+
+                <p class="listing-description">
+                    <%= listing.description %>
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-4">
+
+            <div class="price-card">
+
+                <h2 class="price-value">
+                    ₹ <%= listing.price.toLocaleString("en-IN") %>
+                </h2>
+
+                <p class="price-night">
+                    per night
+                </p>
+
+                <hr>
+
+                <!-- <button class="btn reserve-btn w-100">
+                    Reserve Now
+                </button> -->
+                <form action="/bookings/<%= listing._id %>" method="POST">
+
+    <div class="mb-3">
+        <label>Check In</label>
+        <input
+            type="date"
+            name="checkIn"
+            class="form-control"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label>Check Out</label>
+        <input
+            type="date"
+            name="checkOut"
+            class="form-control"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label>Guests</label>
+        <input
+            type="number"
+            name="guests"
+            min="1"
+            value="1"
+            class="form-control"
+        >
+    </div>
+
+    <button class="btn reserve-btn w-100">
+        Reserve Now
+    </button>
+
+</form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- OWNER BUTTONS -->
+    <% if (currUser && listing.owner && listing.owner.equals(currUser._id)) { %>
+
+    <div class="owner-actions">
+
+        <a
+            href="/listings/<%= listing._id %>/edit"
+            class="btn btn-dark"
+        >
+            Edit Listing
+        </a>
+
+        <form
+            method="POST"
+            action="/listings/<%= listing._id %>?_method=DELETE"
+        >
+            <button class="btn btn-danger">
+                Delete Listing
+            </button>
+        </form>
+
+    </div>
+
+    <% } %>
+
+    <!-- REVIEW FORM -->
+    <% if(currUser){ %>
+
+    <div class="review-section">
+
+        <h3 class="section-heading mb-4">
+            Leave a Review
+        </h3>
+
+        <form
+            action="/listings/<%= listing._id %>/reviews"
+            method="POST"
+            class="review-form"
+        >
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Rating
+                </label>
+
+                <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    name="review[rating]"
+                    class="form-range"
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Comment
+                </label>
+
+                <textarea
+                    name="review[comment]"
+                    rows="4"
+                    class="form-control"
+                    required
+                ></textarea>
+
+            </div>
+
+            <button class="btn btn-dark">
+                Submit Review
+            </button>
+
+        </form>
+
+    </div>
+
+    <% } else { %>
+
+    <div class="alert alert-info mt-5">
+        Login to leave a review.
+    </div>
+
+    <% } %>
+
+    <!-- REVIEWS -->
+    <div class="reviews-wrapper">
+
+        <h3 class="section-heading mb-4">
+            Guest Reviews
+        </h3>
+
+        <div class="row">
+
+            <% for(let review of listing.reviews){ %>
+
+            <div class="col-md-6 mb-4">
+
+                <div class="review-card">
+
+                    <div class="review-rating">
+                        ⭐ <%= review.rating %>/5
+                    </div>
+
+                    <p class="review-comment">
+                        <%= review.comment %>
+                    </p>
+
+                    <% if(currUser){ %>
+
+                    <form
+                        method="POST"
+                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                    >
+                        <button class="btn btn-outline-danger btn-sm">
+                            Delete Review
+                        </button>
+                    </form>
+
+                    <% } %>
+
+                </div>
+
+            </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
